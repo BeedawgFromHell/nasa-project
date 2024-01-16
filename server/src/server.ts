@@ -1,6 +1,6 @@
 import * as http from 'http';
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 import * as mongo from './services/mongo';
 import { app } from './app';
