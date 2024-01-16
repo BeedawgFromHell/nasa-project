@@ -20,7 +20,7 @@ const launchesSchema = new Schema({
     },
     target: {
         type: String,
-        required: true
+        required: false
     },
     customers: [String],
     upcoming: {

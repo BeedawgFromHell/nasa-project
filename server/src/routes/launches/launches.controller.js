@@ -1,7 +1,10 @@
 import launchesModel from '../../models/launches.model'
+import { getPagination } from '../../services/query'
 
 export async function httpGetAllLaunches(req, resp) {
-    return resp.json(await launchesModel.getAllLaunches())
+    const { skip, limit } = getPagination( req.query.limit, req.query.page)
+
+    return resp.json(await launchesModel.getAllLaunches(skip, limit))
 }
 
 export async function httpPostNewLaunch(req, resp) {
@@ -35,11 +38,11 @@ export async function httpDeleteLaunch(req, resp) {
 
     const aborted = await launchesModel.abortLaunchWithId(launchId)
 
-    if(!aborted) {
+    if (!aborted) {
         return resp.status(400).json({
             error: 'Launch not aborted'
         })
-    } 
+    }
 
     return resp.status(200).json({
         ok: true

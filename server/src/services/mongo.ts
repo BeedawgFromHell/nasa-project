@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const MONGO_URL = 'mongodb+srv://bekbolkochkorov:CxFTxDuo2EksCypo@cluster0.g3n4l3d.mongodb.net/?retryWrites=true&w=majority'
+const MONGO_URL = process.env.MONGO_URL;
 
 mongoose.connection.once('open', () => {
     console.log('MongoDB connection ready')
