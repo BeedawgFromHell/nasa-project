@@ -1,12 +1,13 @@
 import request from 'supertest'
 import { mongoConnect, mongoDisconnect } from '../../services/mongo'
-
+import { loadPlanets } from '../../models/planets.model'
 import { app } from '../../app'
 
 
 describe('Launches API', () => {
     beforeAll(async () => {
         await mongoConnect()
+        await loadPlanets()
     })
 
     afterAll(async () => {
