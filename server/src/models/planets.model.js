@@ -13,9 +13,10 @@ function isHabitable(planet) {
         && planet['koi_prad'] < 1.6
 }
 
+//dirname(fileURLToPath(import.meta.url))
 export function loadPlanets() {
     return new Promise((resolve, reject) => {
-        fs.createReadStream(path.join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'data', 'kepler_data.csv'))
+        fs.createReadStream(path.join(__dirname, '..', '..', 'data', 'kepler_data.csv'))
             .pipe(parse({
                 comment: '#',
                 columns: true
